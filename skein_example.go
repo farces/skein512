@@ -16,5 +16,5 @@ func main() {
 	}
 
 	fmt.Println(hex.EncodeToString(out))
-    fmt.Println(r)
+	fmt.Println(r)
 }
