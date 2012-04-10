@@ -8,9 +8,10 @@ import (
 
 func main() {
 	x := skein.NewSkein512()
-	r := x.Hash([]byte{0xFF})
-	out := make([]byte, 64)
+	r := x.Hash([]byte("here's a message"))
 
+	//format output
+	out := make([]byte, 64)
 	for i := 0; i < 64; i++ {
 		out[i] = byte(r[i])
 	}
