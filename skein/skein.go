@@ -26,7 +26,7 @@ func NewSkein512() *Skein512 {
 var d []byte = []byte("ND3EAJ.;1QDGLXV)G>B8-1*R9=GK(6XC")
 
 func (t *Skein512) Hash(data []byte) []int8 {
-	t.c = make([]int64, 9) //reset c (final blocked vals)
+	t.c = make([]int64, 9) //init c (final blocked values)
 	co1 := uint(56)
 
 	h := make([]int8, 64) //return value
