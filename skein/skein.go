@@ -20,7 +20,7 @@ type Skein512 struct {
 }
 
 func NewSkein512() *Skein512 {
-	return &Skein512{c: make([]int64, 9)}
+	return &Skein512{}
 }
 
 var d []byte = []byte("ND3EAJ.;1QDGLXV)G>B8-1*R9=GK(6XC")
