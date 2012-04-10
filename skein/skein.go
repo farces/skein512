@@ -10,6 +10,9 @@ package skein
    Usage:
        x := skein.NewSkein512()
        r := x.Hash([]byte{bytes,of,message})
+       OR any other method of turning a string into a byte array i.e.
+       r := x.Hash([]byte("your string here"))
+
 */
 
 type Skein512 struct {
