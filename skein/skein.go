@@ -1,7 +1,5 @@
 package skein
 
-import "fmt"
-
 /* A fairly direct port of the Scala Skein512-512 implementation at
    http://www.h2database.com/skein/
 
