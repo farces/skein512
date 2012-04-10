@@ -16,6 +16,6 @@ func main() {
 		out[i] = byte(r[i])
 	}
 
-	fmt.Println(hex.EncodeToString(out))
-	fmt.Println(r)
+	fmt.Println(hex.EncodeToString(out)) //hex representation
+	fmt.Println(r)                       //original int8 representation
 }
