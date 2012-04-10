@@ -22,12 +22,16 @@ func NewSkein512() *Skein512 {
 var d []byte = []byte("ND3EAJ.;1QDGLXV)G>B8-1*R9=GK(6XC")
 
 func (t *Skein512) Hash(data []byte) []int8 {
+    t.c = make([]int64,9) //reset c (final blocked vals)
+
     co1 := uint(56)
 
-    h:= make([]int8,64)
+    h := make([]int8,64) //return value
+
     var b0 []byte = []byte("SHA3\x01\x00\x00\x00\x00\x02")
     b := make([]byte,64)
     copy(b,b0)
+
     t.block(b, 32, int64(196 << co1),0)
     t0 := 0
     t1 := int64(112 << co1)
@@ -54,7 +58,7 @@ func (t *Skein512) Hash(data []byte) []int8 {
 func (t *Skein512) block(b []byte, t0 int, t1 int64, o int) {
     x := make([]int64,8)
     k := make([]int64,8)
-    t.c[8] = 0x1BD11BDAA9FC1A22
+    t.c[8] = 0x1BD11BDAA9FC1A22 //constant C240
     for i := 0; i<8; i++ {
         for j := 0; j<8; j++ {
             k[i] = (k[i] << 8) + int64(b[o + i * 8 + 7 - j] & 255)
@@ -71,6 +75,7 @@ func (t *Skein512) block(b []byte, t0 int, t1 int64, o int) {
             n := (i + 1 + i) & 7
             s := d[16 * (r & 1) + i] - 32
             x[m] += x[n]
+            //uint64(int64 value) >> x is equiv. to unsigned right shift
             var temp1 uint64 = uint64(x[n])
             x[n] = ((x[n] << s) | int64(temp1 >> (64 - s))) ^ x[m]
         }
