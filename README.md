@@ -11,7 +11,7 @@ import "github.com/farces/skein512/skein"
 ```go
 hasher := skein.NewSkein512()
 message := "your message here"
-hasher.Hash([]byte(message))
+result := hasher.Hash([]byte(message))
 ```
 
 .Hash(x []byte) takes a byte array rather than a string as it can/will be used to hash non-strings (i.e. file data, etc.)
